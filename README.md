@@ -49,8 +49,8 @@ Actions | update_quality
 What do we want the program to do?
 - Check if item is part of "special requirements". If not:
   - Reduce quality by 1 (stop at 0)
-  - Reduce sell_in by 1 (stop at 0)
+  - Reduce sell_in by 1
 - else
-  - if aged brie, increase quality by 1 (stop at 50)
+  - if aged brie, increase quality by 1 (stop at 50) and reduce sell_in by 1
   - if sulfuras, do nothing
-  - if backstage passes, increase quality by varying amounts
+  - if backstage passes, increase quality by varying amounts and reduce sell_in by 1
