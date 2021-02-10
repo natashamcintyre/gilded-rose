@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'item'
-require 'quality'
+require_relative './item'
+require_relative './quality'
 
 # class is responsible for updating sell_in dates
 class GildedRose
@@ -10,15 +10,16 @@ class GildedRose
   NOT_URGENT_LIMIT = 10
   URGENT_LIMIT = 5
 
-  def initialize(items)
+  def initialize(items, quality_class: Quality)
     @items = items
+    @quality = quality_class.new
   end
 
   def update
     @items.each do |item|
       next if item.name == 'Sulfuras, Hand of Ragnaros'
 
-      Quality.new(item).update
+      @quality.update(item)
       item.sell_in -= 1
     end
   end

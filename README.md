@@ -1,4 +1,15 @@
 # Gilded Rose
+An app which updates the value of quality and sell_in days of a variety of items.
+
+## Usage
+Clone the repository, change into the directory, then run
+```
+bundle
+irb -r './lib/gilded_rose.rb'
+```
+
+eg:
+![IRB screenshot](/images/irb_usage.png)
 
 ## Spec
 
@@ -19,11 +30,11 @@ Feel free to make any changes to the UpdateQuality method and add any new code a
 
 ## Breaking the Spec Down
 
-SellIn - number of days to see the item
+Sell_in - number of days to see the item
 Quality - how valuable the item is
 End of day, both values are lowered.
 
-When SellIn = 0, quality degrades 2*
+When Sell_in = 0, quality degrades 2*
 0 <= Quality <= 50
 
 Special Cases:
@@ -54,3 +65,8 @@ What do we want the program to do?
   - if aged brie, increase quality by 1 (stop at 50) and reduce sell_in by 1
   - if sulfuras, do nothing
   - if backstage passes, increase quality by varying amounts and reduce sell_in by 1
+
+Add On:
+  - conjured, decrease quality by 2
+
+  I decided to extract out a Quality class to handle all of the logic behind the quality changes.
