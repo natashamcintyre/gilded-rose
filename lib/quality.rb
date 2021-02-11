@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Quality class responsible for managing the quality figure of each item
+# Quality class responsible for managing the quality value of each item
 class Quality
   LOWER_LIMIT = 0
   UPPER_LIMIT = 50
@@ -8,6 +8,7 @@ class Quality
   URGENT_LIMIT = 5
   URGENT_BONUS = 2
   VERY_URGENT_BONUS = 3
+  NORMAL_DECREASE = 1
 
   def update(item)
     case item.name
@@ -24,12 +25,12 @@ class Quality
 
   private
 
-  def decrease(item, amount = 1)
+  def decrease(item, amount = NORMAL_DECREASE)
     amount *= 2 if item.sell_in <= 0
     item.quality -= amount unless item.quality == LOWER_LIMIT
   end
 
-  def increase(item, amount = 1)
+  def increase(item, amount = NORMAL_DECREASE)
     item.quality += amount unless item.quality == UPPER_LIMIT
   end
 
@@ -38,7 +39,7 @@ class Quality
       increase(item)
     elsif item.sell_in > URGENT_LIMIT
       increase(item, URGENT_BONUS)
-    elsif item.sell_in.positive?
+    elsif item.sell_in >= 0
       increase(item, VERY_URGENT_BONUS)
     else
       item.quality = 0

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'item'
+
 SELL_IN = 15
 QUALITY = 10
 

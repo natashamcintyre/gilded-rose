@@ -36,33 +36,47 @@ describe Quality do # rubocop:disable Metrics/BlockLength
       end
     end
 
-    context 'backstage pass' do
+    context 'backstage pass' do # rubocop:disable Metrics/BlockLength
+      # a long block to test edge cases of the different range requirements
       it 'quality will not go higher than 50' do
         pass.quality = 50
         expect { subject.update(pass) }.not_to(change { pass.quality })
       end
 
-      it 'increases quality by 1 for sell_in date > 10' do
+      it 'increases quality by 1 for sell_in date > 10, specifically 11' do
+        pass.sell_in = 11
         expect { subject.update(pass) }.to change { pass.quality }.by(1)
       end
 
-      it 'increases quality by 2 if sell_in date is 6..10' do
+      it 'increases quality by 2 if sell_in date is 6..10, specifically 10' do
         pass.sell_in = 10
         expect { subject.update(pass) }.to change { pass.quality }.by(2)
       end
 
-      # should I check 6 as well?
+      it 'increases quality by 2 if sell_in date is 6..10, specifically 6' do
+        pass.sell_in = 6
+        expect { subject.update(pass) }.to change { pass.quality }.by(2)
+      end
 
-      it 'increases quality by 3 if sell_in date is 0..5' do
+      it 'increases quality by 3 if sell_in date is 0..5, specifically 5' do
         pass.sell_in = 5
         expect { subject.update(pass) }.to change { pass.quality }.by(3)
       end
 
-      # another test for 0 as well?
+      it 'increases quality by 3 if sell_in date is 0..5, specifically 0' do
+        pass.sell_in = 0
+        expect { subject.update(pass) }.to change { pass.quality }.by(3)
+      end
 
       it 'sets quality to 0 if sell_in date is negative' do
         pass.sell_in = -1
         expect { subject.update(pass) }.to change { pass.quality }.to(0)
+      end
+    end
+
+    context 'conjured' do
+      it 'decreases quality by 2' do
+        expect { subject.update(conjured) }.to change { conjured.quality }.by(-2)
       end
     end
   end

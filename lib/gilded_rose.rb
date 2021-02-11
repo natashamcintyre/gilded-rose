@@ -10,7 +10,7 @@ class GildedRose
   NOT_URGENT_LIMIT = 10
   URGENT_LIMIT = 5
 
-  def initialize(items, quality_class: Quality)
+  def initialize(items, quality_class = Quality)
     @items = items
     @quality = quality_class.new
   end

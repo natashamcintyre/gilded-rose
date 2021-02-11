@@ -69,4 +69,9 @@ What do we want the program to do?
 Add On:
   - conjured, decrease quality by 2
 
-  I decided to extract out a Quality class to handle all of the logic behind the quality changes.
+I decided to extract out a Quality class to handle all of the logic behind the quality changes.
+The conjured item was fairly easy to add in. It required an additional 'when' in the case statement in Quality#update. I also needed to slightly refactor the Quality#decrease method to include a default amount argument and for that parameter to be *multiplied* by 2 (as opposed to = 2) if sell_in days is <= 0.
+
+I have a query about the quality_spec, particularly in testing edge cases. Is it unnecessary to include a tests for the limiting values of the sell_in attribute for backstage passes, where sell in is -1, 0, 5, 6, 10 and 11?
+
+I have a query about the item.to_s statement as it did not appear to be a necessary part of the program. I could have used this for testing but felt that perhaps if the method was not there for the purpose of the functionality of the program, it shouldn't just be used for the purposes of testing. I have left it in so that the Goblin doesn't eat me.
