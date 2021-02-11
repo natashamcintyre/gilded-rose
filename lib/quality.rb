@@ -2,13 +2,17 @@
 
 # Quality class responsible for managing the quality value of each item
 class Quality
+  # Set quality value lower and upper limit
   LOWER_LIMIT = 0
   UPPER_LIMIT = 50
+  # Set the normal quality change rate
+  NORMAL_RATE = 1
+  # Set backstage pass sale urgency boundaries (in days).
   NOT_URGENT_LIMIT = 10
   URGENT_LIMIT = 5
+  # Set backstage pass quality bonuses
   URGENT_BONUS = 2
   VERY_URGENT_BONUS = 3
-  NORMAL_DECREASE = 1
 
   def update(item)
     case item.name
@@ -25,12 +29,12 @@ class Quality
 
   private
 
-  def decrease(item, amount = NORMAL_DECREASE)
+  def decrease(item, amount = NORMAL_RATE)
     amount *= 2 if item.sell_in <= 0
     item.quality -= amount unless item.quality == LOWER_LIMIT
   end
 
-  def increase(item, amount = NORMAL_DECREASE)
+  def increase(item, amount = NORMAL_RATE)
     item.quality += amount unless item.quality == UPPER_LIMIT
   end
 
