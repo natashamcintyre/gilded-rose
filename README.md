@@ -5,11 +5,22 @@ An app which updates the value of quality and sell_in days of a variety of items
 Clone the repository, change into the directory, then run
 ```
 bundle
-irb -r './lib/gilded_rose.rb'
+irb -r './app.rb'
 ```
 
 eg:
 ![IRB screenshot](/images/irb_usage.png)
+
+## Testing
+Run
+```
+rspec
+```
+
+For unit tests only, run
+```
+rspec './spec/units'
+```
 
 ## Spec
 
@@ -81,16 +92,26 @@ Now going to attempt using polymorphism. Plan:
 
 Item: name, sell_in, quality
 
-Brie < Item
+Brie < ~~Item~~ Normal
 already has its name
 Action: #update_quality
   quality += 1
 
-Pass < Item
+Pass < ~~Item~~ Normal
 already has its name
 Action #update_quality
-  quality + ? depending on sellin.
+  quality + ? depending on sell_in.
 
-Sulfuras < Item
+Sulfuras < ~~Item~~ Normal
 Action #update_quality
   do nothing
+
+Normal < Item
+Action #update_quality
+  quality -= 1, or double depending on sell_in
+
+Conjured < ~~Item~~ Normal
+Action #update_quality
+  quality -= 2, or double depending on sell_in
+
+I have decided to actually inherit the other classes form normal items, as this can then hold the standard quality limits, and have a decrease_quality_by method which can be used by the Conjured class, instead of duplicating this method in both classes.
