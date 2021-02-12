@@ -3,14 +3,15 @@
 require 'gilded_rose'
 
 describe GildedRose do
-  include_context 'items'
-  let(:quality_double) { double :quality_double }
-  let(:quality_class_double) { double :quality_class, new: quality_double }
-  subject { described_class.new(items, quality_class_double) }
-
-  before(:each) do
-    allow(quality_double).to receive(:update)
-  end
+  SELL_IN = 15
+  QUALITY = 10
+  let(:brie) { Brie.new(SELL_IN, QUALITY) }
+  let(:normal) { Normal.new('Normal', SELL_IN, QUALITY) }
+  let(:pass) { Pass.new(SELL_IN, QUALITY) }
+  let(:sulfuras) { Sulfuras.new }
+  let(:conjured) { Conjured.new(SELL_IN, QUALITY) }
+  let(:items) { [normal, brie, pass, sulfuras, conjured] }
+  subject { described_class.new([normal, brie, pass, sulfuras, conjured]) }
 
   describe '#update' do
     it 'decreases sell_in for normal items by 1' do

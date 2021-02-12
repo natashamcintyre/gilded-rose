@@ -12,7 +12,7 @@ describe 'the gildedrose updates items appropriately' do # rubocop:disable Metri
   end
 
   it 'updates normal items appropriately, reducing quality and sell_in by 1' do
-    expect(normal.name).to be 'normal'
+    expect(normal.name).to be 'Normal'
     expect(normal.sell_in).to be SELL_IN - 1
     expect(normal.quality).to be QUALITY - 1
   end
@@ -31,8 +31,8 @@ describe 'the gildedrose updates items appropriately' do # rubocop:disable Metri
 
   it 'updates sulfuras appropriately, not changing anything' do
     expect(sulfuras.name).to start_with 'Sulfuras'
-    expect(sulfuras.sell_in).to be SELL_IN
-    expect(sulfuras.quality).to be QUALITY
+    expect(sulfuras.sell_in).to be 'N/A'
+    expect(sulfuras.quality).to be 'N/A'
   end
 
   it 'updates conjured items correctly, reducing sell_in by 1 and quality by 2' do
