@@ -2,6 +2,7 @@
 
 require_relative './item'
 require_relative './gilded_rose'
+
 # Brie class responsible for updating its quality
 class Normal < Item
   LOWER_LIMIT = GildedRose::LOWER_LIMIT
@@ -13,7 +14,7 @@ class Normal < Item
   end
 
   private
-  
+
   def decrease_quality_by(amount)
     amount.times { @quality -= 1 unless @quality == LOWER_LIMIT }
   end

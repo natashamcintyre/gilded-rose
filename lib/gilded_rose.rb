@@ -11,7 +11,7 @@ class GildedRose
 
   def update
     @items.each do |item|
-      next if item.name == 'Sulfuras, Hand of Ragnaros'
+      next if item.is_a? Sulfuras
 
       item.update_quality
       item.sell_in -= 1

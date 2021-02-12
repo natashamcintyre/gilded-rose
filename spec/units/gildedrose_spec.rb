@@ -2,9 +2,10 @@
 
 require 'gilded_rose'
 
+SELL_IN = 15
+QUALITY = 10
+
 describe GildedRose do
-  SELL_IN = 15
-  QUALITY = 10
   let(:brie) { Brie.new(SELL_IN, QUALITY) }
   let(:normal) { Normal.new('Normal', SELL_IN, QUALITY) }
   let(:pass) { Pass.new(SELL_IN, QUALITY) }

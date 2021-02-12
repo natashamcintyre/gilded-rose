@@ -2,10 +2,12 @@
 
 require 'pass'
 
-describe Pass do
-  subject { described_class.new(15, 10) }
+# rubocop disabled as tests needed to cover edge cases
 
-  describe '#update_quality' do
+describe Pass do # rubocop:disable Metrics/BlockLength
+  subject { described_class.new(20, 10) }
+
+  describe '#update_quality' do # rubocop:disable Metrics/BlockLength
     it 'quality will not go higher than 50' do
       subject.quality = 50
       expect { subject.update_quality }.not_to(change { subject.quality })

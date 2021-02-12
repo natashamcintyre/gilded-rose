@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative './normal'
+
 # Brie class responsible for updating its quality
 class Conjured < Normal
   LOWER_LIMIT = Normal::LOWER_LIMIT

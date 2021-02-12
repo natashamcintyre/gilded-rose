@@ -2,10 +2,17 @@
 
 require 'gilded_rose'
 
+SELL_IN = 15
+QUALITY = 10
+
 # Feature testing for all types of items, so rubocop block length disabled
 describe 'the gildedrose updates items appropriately' do # rubocop:disable Metrics/BlockLength
-  include_context 'items'
-
+  let(:brie) { Brie.new(SELL_IN, QUALITY) }
+  let(:normal) { Normal.new('Normal', SELL_IN, QUALITY) }
+  let(:pass) { Pass.new(SELL_IN, QUALITY) }
+  let(:sulfuras) { Sulfuras.new }
+  let(:conjured) { Conjured.new(SELL_IN, QUALITY) }
+  let(:items) { [normal, brie, pass, sulfuras, conjured] }
   before(:each) do
     gilded_rose = GildedRose.new(items)
     gilded_rose.update
