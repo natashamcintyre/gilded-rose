@@ -1,6 +1,8 @@
 # Gilded Rose
 An app which updates the value of quality and sell_in days of a variety of items.
 
+Base code taken from https://github.com/emilybache/GildedRose-Refactoring-Kata.git
+
 ## Usage
 Clone the repository, change into the directory, then run
 ```
