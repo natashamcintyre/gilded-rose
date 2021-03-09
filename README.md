@@ -77,3 +77,5 @@ The conjured item was fairly easy to add in. It required an additional 'when' in
 I have a query about the quality_spec, particularly in testing edge cases. Is it unnecessary to include a tests for the limiting values of the sell_in attribute for backstage passes, where sell in is -1, 0, 5, 6, 10 and 11?
 
 I have a query about the item.to_s statement as it did not appear to be a necessary part of the program. I could have used this for testing but felt that perhaps if the method was not there for the purpose of the functionality of the program, it shouldn't just be used for the purposes of testing. I have left it in so that the Goblin doesn't eat me.
+
+[Tech tests here](https://github.com/makersacademy/course/tree/master/individual_challenges)
